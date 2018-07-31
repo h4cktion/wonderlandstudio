@@ -5,6 +5,8 @@ class Formations extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.modifArticle = this.modifArticle.bind(this);
         this.state = {
             formations: [
                 
@@ -107,6 +109,12 @@ class Formations extends React.Component {
 
     }
 
+     modifArticle(article) {
+         console.log("ok");
+        console.log(article); 
+    } 
+
+
 
     render() {
         const self = this;
@@ -136,8 +144,8 @@ class Formations extends React.Component {
                         if (index % 2 === 0)
                             acc.push(
                                 <div className="row" key={"row"+item.id}>
-                                    <Formation key={item.id} formation={item} cssClass={leftCssClass} />,
-                                    {(ary[index + 1] !== undefined) ?  <Formation key={ary[index + 1].id} formation={ary[index + 1]} cssClass={rightCssClass} /> : "" }
+                                    <Formation key={item.id} formation={item} cssClass={leftCssClass} save={ self.modifArticle } />
+                                    {(ary[index + 1] !== undefined) ? <Formation key={ary[index + 1].id} formation={ary[index + 1]} cssClass={rightCssClass} save={self.modifArticle}  /> : "" }
                                 </div>
                          );
                         return acc;
